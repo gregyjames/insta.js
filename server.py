@@ -1,5 +1,4 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import SocketServer
 import urllib2
 from urllib2 import urlopen, URLError, HTTPError
 import uuid
@@ -20,26 +19,21 @@ class S(BaseHTTPRequestHandler):
     def do_GET(self):
         self._set_headers()
         myurl = self.path
-        #splits to colon
+        #Splits JS input to colon
         myurl2 = myurl.split(':')
         str = ""
         for x in range(1, len(myurl2)):
             str = str + myurl2[x]
-        #print(str)
-        #splits to bracket
+        #Splits to bracket
         myurl3 = str.split('}')
         dlfile(myurl3[0].replace("https//","https://"))
-        #dlfile(myurl3[0])
 
     def do_HEAD(self):
         self._set_headers()
 
     def do_POST(self):
-        # Doesn't do anything with posted data
         content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
         post_data = self.rfile.read(content_length) # <--- Gets the data itself
-        #dlfile(post_data)
-        print post_data
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)
