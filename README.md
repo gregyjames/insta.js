@@ -1,4 +1,4 @@
-# insta.js
+# ![alt text](http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Downloads-icon.png)insta.js
 A simple way to download images from instagram.
 
 ## How to use
